@@ -6,8 +6,7 @@ to those in the Food Access Demographic Data project on GitHub:
 
 https://github.com/HHou2/Food-Access-Demographic-Data/blob/main/backend.py
 
-The code for those similar algorithms, however, has stripped unccessary 
-indexes and extraneous information for clarity.
+This code, however, has stripped unncessary information for clarity.
 """
 
 def swap(lst, i, j):
@@ -159,14 +158,14 @@ def main():
             'goats', 'zebra']
     lst2 = [11, 72, 2, 13, 13, 42, 4, 6, 78]
 
-    print("Here is lst1: %s" % lst1)
-    print("Here is lst2: %s" % lst2)
+    print("Here is lst1: %s" % lst1) # prints lst1
+    print("Here is lst2: %s" % lst2) # prints lst2
 
     print()
 
     # sorting lists
-    lst1_sorted = selection_sort(lst1)
-    lst2_sorted = selection_sort(lst2)
+    lst1_sorted = selection_sort(lst1) # prints lst1, but sorted
+    lst2_sorted = selection_sort(lst2) # prints lst2, but sorted
 
     print("Here is lst1 sorted: " + str(lst1_sorted))
     print("here is lst2 sorted: " + str(lst2_sorted))
@@ -174,8 +173,10 @@ def main():
     print()
 
     # binary searching
-    print("Index of 'dogs' in lst1, if it appears: %s" % binary_search(lst1_sorted, 'dogs'))
-    print("Index of 6 in lst2, if it appears: %s" % binary_search(lst2_sorted, 6))
+    print("Index of 'dogs' in lst1, if it appears: %s" % \
+          binary_search(lst1_sorted, 'dogs'))
+    print("Index of 6 in lst2, if it appears: %s" % \
+          binary_search(lst2_sorted, 6))
 
 if __name__ == "__main__":
     main()
