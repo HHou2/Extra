@@ -51,7 +51,6 @@ def lookbefore(lst):
 
     Parameters:
         lst: (lst) ordered list of items to search within
-        start: (int) inddx to start (before) search for
     Returns:
         idxs_found: (lst) list of indexes when item in lst
     """
@@ -79,7 +78,6 @@ def lookafter(lst):
 
     Parameters:
         lst: (lst) ordered list of items to search within
-        start: (int) index to start (afterwards) search for
     Returns:
         idxs_found: (lst) list of indexes when item in lst
     """
@@ -106,6 +104,8 @@ def lookafter(lst):
 def binary_search(lst, item):
     """
     Uses a binary searching algorithm to find an item in an ordered list.
+
+    Note: list must already be ordered beforehand.
     
     Parameters:
         lst: (lst) list to search within
@@ -129,6 +129,10 @@ def binary_search(lst, item):
             for i in range(len(indexes_before_mid)):
                 idxs_found.append(indexes_before_mid[i])
 
+            # corrects for Python counting from 0 error
+            if (lst[0] == item) and (idxs_found[0] != 0):
+                idxs_found.append(0)
+
             # check indexes immediately after mid
             indexes_after_mid = lookafter(lst[mid:])
             for i in range(len(indexes_after_mid)):
@@ -139,3 +143,39 @@ def binary_search(lst, item):
             high = mid - 1
         else:
             low = mid + 1
+
+def main():
+    """
+    Main function for testing.
+
+    Parameters:
+        none
+    Returns:
+        none
+    """
+
+    # creating lists
+    lst1 = ['cats', 'bears', 'parrots', 'fish', 'dogs', 'rhinos', 'dogs', \
+            'goats', 'zebra']
+    lst2 = [11, 72, 2, 13, 13, 42, 4, 6, 78]
+
+    print("Here is lst1: %s" % lst1)
+    print("Here is lst2: %s" % lst2)
+
+    print()
+
+    # sorting lists
+    lst1_sorted = selection_sort(lst1)
+    lst2_sorted = selection_sort(lst2)
+
+    print("Here is lst1 sorted: " + str(lst1_sorted))
+    print("here is lst2 sorted: " + str(lst2_sorted))
+
+    print()
+
+    # binary searching
+    print("Index of 'dogs' in lst1, if it appears: %s" % binary_search(lst1_sorted, 'dogs'))
+    print("Index of 6 in lst2, if it appears: %s" % binary_search(lst2_sorted, 6))
+
+if __name__ == "__main__":
+    main()
